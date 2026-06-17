@@ -19,7 +19,7 @@ export const Route = createFileRoute("/api/chat")({
         const result = streamText({
           model: gateway(DEFAULT_MODEL),
           system: `You are an AI Workplace Assistant inside a productivity suite. Help professionals improve productivity, communication, planning, and research. Be concise, structured, and actionable. Use markdown for lists and emphasis.`,
-          messages: convertToModelMessages(messages as UIMessage[]),
+          messages: await convertToModelMessages(messages as UIMessage[]),
         });
 
         return result.toUIMessageStreamResponse({
